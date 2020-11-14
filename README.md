@@ -8,3 +8,14 @@ git clone git://github.com/sinandurgut07/tcmb_currency
 cd tcmb_currency
 go run main.go
 ```
+## Kullanım
+```
+Tüm para birimleri:
+http://localhost:3000
+
+Tekil para birimi:
+http://localhost:3000/currency/{currency}
+Ör:
+http://localhost:3000/currency/USD
+
+```
