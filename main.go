@@ -44,7 +44,7 @@ func CurrencyHandler(w http.ResponseWriter, r *http.Request) {
 		data.WriteResponse(w, r)
 		return
 	}
-	data.Code = 404
+	data.Code = 204
 	data.Data = "Currency code not exist!"
 	data.WriteResponse(w, r)
 }
