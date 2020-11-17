@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"time"
 
 	goCache "github.com/patrickmn/go-cache"
 )
@@ -23,7 +24,12 @@ func GetOrSetCurrencies(cache *goCache.Cache) (*tcmbResponse, error) {
 	if currencies, found := cache.Get(cacheKey); found {
 		return currencies.(*tcmbResponse), nil
 	}
-	return processAllCurrencies()
+	currencies, err := processAllCurrencies()
+	if err != nil {
+		return nil, err
+	}
+	cache.Set(cacheKey, currencies, 5 * time.Minute)
+	return currencies, nil
 }
 
 
